@@ -25,3 +25,6 @@ O fluxo inicia pela Análise e gera entregas para as cinco fases: diagnóstico; 
 
 ## Fundamentação na qualificação
 A página contém resultados do estudo, relações entre evidências e decisões por fase e referências selecionadas. O botão de perfil de referência preenche escolhas inspiradas no estudo; não reproduz todas as condições históricas. Confira a situação dos materiais, piloto, infraestrutura e tutoria. Veja REFERENCIAS.md para fonte e divergência de edição de Kolb.
+
+## Opções adaptadas aos dados
+Formação prévia e experiência assistencial são campos distintos. Categorias reproduzem a Tabela 2, incluindo recepcionista. Barreiras reproduzem a Tabela 9 (UR, não pessoas). Assistência e gestão possuem atividades práticas distintas. Autoeficácia é separada de desempenho; seguimento e indicadores assistenciais são propostas futuras. Carga histórica: 40 h, mais 10 h opcionais de pediatria.
