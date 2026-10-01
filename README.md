@@ -19,3 +19,9 @@ Abra `index.html` no navegador. Escolha o perfil do curso e clique em **Construi
 
 ## Escopo
 As regras são propostas de planejamento, não um instrumento validado. Habilidades, autoeficácia e transferência são medidas distintas. A carga horária precisa ser estimada a partir das atividades e competências. A ferramenta não coleta ou transmite dados e não deve receber dados identificáveis de pacientes. As competências profissionais precisam ser detalhadas conforme a regulamentação aplicável antes de compor o currículo final.
+
+## Modelo ADDIE
+O fluxo inicia pela Análise e gera entregas para as cinco fases: diagnóstico; matriz curricular e avaliação; materiais testados; plano operacional; relatório e revisão. As decisões adicionais incluem materiais, piloto, tutoria, infraestrutura e acompanhamento posterior. Os módulos A–D ficam dentro do Design. A avaliação formativa acompanha todas as fases; o percurso permite revisões iterativas. As regras são recomendações de planejamento, não um algoritmo validado.
+
+## Fundamentação na qualificação
+A página contém resultados do estudo, relações entre evidências e decisões por fase e referências selecionadas. O botão de perfil de referência preenche escolhas inspiradas no estudo; não reproduz todas as condições históricas. Confira a situação dos materiais, piloto, infraestrutura e tutoria. Veja REFERENCIAS.md para fonte e divergência de edição de Kolb.

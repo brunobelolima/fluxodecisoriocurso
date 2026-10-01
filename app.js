@@ -30,7 +30,41 @@ form.addEventListener("submit",event=>{
  if(goals.includes("skill"))ev+=" Avaliar desempenho em casos com rubrica; medir autoeficácia separadamente.";
  if(goals.includes("practice")||need==="practice")ev+=" Planejar seguimento em 60–90 dias para verificar transferência para a prática.";
  if(goals.includes("service")||need==="network")ev+=" Monitorar indicadores de processo e implementação definidos no diagnóstico.";put("assessment",ev);
+
+ const materials=read("materials"),pilot=read("pilot"),support=read("support"),platform=read("platform"),followup=read("followup");
+ const analysis="Confirmar necessidades com participantes e serviços, mapear competências e recursos e distinguir lacunas educacionais de problemas de organização do trabalho. Entrega: diagnóstico documentado e prioridades pactuadas.";
+ const design="Definir objetivos observáveis e alinhar competências, atividades e critérios de avaliação. Organizar módulos A–D e estimar a carga horária. Entrega: matriz curricular e plano de avaliação. "+ped;
+ let development=materials==="new"?"Produzir roteiros, conteúdos, casos, quizzes e rubricas.":materials==="adapt"?"Revisar materiais existentes e adaptar linguagem, casos, escopo profissional e contexto assistencial.":"Verificar alinhamento dos materiais revisados aos objetivos e critérios de avaliação.";
+ development+=" Testar acessibilidade, uso no celular e funcionamento das atividades. "+(pilot==="yes"?"Realizar piloto com participantes representativos e revisar pelos resultados.":"Fazer teste reduzido de navegação e atividades com representantes do público antes da oferta.")+" Entrega: materiais e ambiente testados.";
+ let implementation="Definir cronograma, responsáveis, comunicação com participantes, acolhimento digital e fluxo de teleconsultoria. "+tele+" "+fmt;
+ implementation+=support==="yes"?" Preparar tutores e combinar rotinas de suporte.":support==="limited"?"Dimensionar turmas e encontros pela capacidade de tutoria; prever prazos de resposta.":"Definir responsáveis por tutoria e suporte antes de abrir inscrições.";
+ implementation+=platform==="ava"?" Configurar e testar o ambiente virtual e a videoconferência.":platform==="simple"?"Organizar materiais e entregas em canais acessíveis; testar acompanhamento e registro das atividades.":" Selecionar e testar a infraestrutura antes da oferta.";
+ implementation+=" Entrega: plano operacional de oferta.";
+ let evaluation="Avaliação formativa: revisar objetivos, materiais e atividades em cada fase. Avaliação final: "+ev;
+ if(followup==="no"&&(goals.includes("practice")||goals.includes("service")||need==="practice"||need==="network"))evaluation+=" O acompanhamento posterior ainda não está disponível: pactuar uma estratégia antes de prometer medir mudança da prática ou do serviço. Desempenho em casos não demonstra, por si só, transferência.";
+ evaluation+=" Entrega: relatório com resultados, limites e decisões de revisão.";
+ const plan=document.getElementById("addiePlan");plan.replaceChildren();
+ [["1 · Análise",analysis],["2 · Design",design],["3 · Desenvolvimento",development],["4 · Implementação",implementation],["5 · Avaliação",evaluation]].forEach(([title,text])=>{const article=document.createElement("article");article.className="panel";const h=document.createElement("h3"),paragraph=document.createElement("p");h.textContent=title;paragraph.textContent=text;article.append(h,paragraph);
+ const grounding={
+ "1 · Análise":"Base: 67,80% sem formação prévia e público multiprofissional. Referência: Knowles, Holton e Swanson (2015). Usar diagnóstico individual para definir o percurso.",
+ "2 · Design":"Base: conhecimento Δ 0,09 e autoeficácia Δ 0,28. Referências: Freire (1996), Kolb (1984, edição listada) e Dennick (2016). Proposta: ligar conteúdo, experiência, reflexão e aplicação, com objetivos observáveis.",
+ "3 · Desenvolvimento":"Base: 6 UR sobre usabilidade e inclusão digital. Referência: Machado et al. (2026). Proposta: materiais leves, teste no celular, revisão de linguagem e piloto.",
+ "4 · Implementação":"Base: conclusão de 102/288 iniciantes e valorização da mediação docente (16 UR). Referência: Mackin et al. (2024), sobre ECHO. Proposta: tutoria e discussão recorrente de casos; não atribuir isoladamente os ganhos à teleconsultoria.",
+ "5 · Avaliação":"Base: BPW-BR e ausência de seguimento e desfechos assistenciais. Referências: Libardi, Luiz e Gutierrez (2024); Pelayo-Alvarez et al. (2013). Proposta: complementar autorrelato com desempenho e acompanhamento. A confiabilidade do domínio de conhecimento e a pertinência dos itens ao público exigem atenção; não usar o escore como único critério de competência."
+ };const evidence=document.createElement("p");evidence.className="grounding";evidence.textContent=grounding[title];article.append(evidence);plan.append(article);});
+ if(followup==="no")put("assessment",evaluation);
  result.hidden=false;result.focus();result.scrollIntoView({behavior:"smooth",block:"start"});
 });
 form.addEventListener("reset",()=>{result.hidden=true;put("error","");});
 document.getElementById("print").addEventListener("click",()=>window.print());
+
+document.getElementById("baseline").addEventListener("click",()=>{
+ form.reset();
+ document.getElementById("need").value="basic";
+ document.getElementById("audience").value="multi";
+ document.getElementById("level").value="mixed";
+ document.getElementById("barrier").value="digital";
+ document.getElementById("cases").value="yes";
+ document.getElementById("followup").value="no";
+ put("baseline-status","Perfil inspirado no estudo: público multiprofissional, experiências heterogêneas, barreiras digitais e casos reais. Recursos, tutoria e piloto permanecem escolhas de planejamento; confira-os antes de gerar. A ausência de seguimento reproduz a limitação da avaliação original.");
+});
