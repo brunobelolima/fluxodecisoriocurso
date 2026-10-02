@@ -49,3 +49,5 @@ header{height:auto;min-height:82px;padding-top:16px;padding-bottom:16px}.brand{f
 .planning-checklist ul{list-style:none;padding:0;margin:8px 0}.planning-checklist li{display:flex;gap:8px;padding:6px 0;line-height:1.4;font-size:14px}.planning-checklist li>span:first-child{font-size:18px}.checklist-done>span:first-child,.checklist-done b{color:#15803d}.checklist-pending>span:first-child,.checklist-pending b{color:#9a3412}
 
 .connectivity-quality.reference-compact{padding:10px 12px;margin:12px 0;border-width:1px}.reference-compact h3{font-size:16px;margin:0 0 4px}.reference-status{font-size:14px}.reference-compact>p{margin:4px 0;font-size:12px}.reference-compact details{font-size:12px;margin-top:6px}.reference-compact details summary{cursor:pointer}.reference-compact details p{font-size:14px;margin:6px 0}
+
+.local-connection{margin-top:10px}.local-connection input:not([type=checkbox]){width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:6px;font:inherit}.local-connection .form-grid{margin:12px 0}

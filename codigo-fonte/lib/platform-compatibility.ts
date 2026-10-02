@@ -17,7 +17,7 @@ export function assessPlatforms(i:NetworkInputs){
  const invalid=(i.upload.trim()!==''&&upload===null)||(i.download.trim()!==''&&download===null)||(i.devices.trim()!==''&&(devices===null||devices<=0||!Number.isInteger(devices)));
  const numeric=!invalid&&upload!==null&&download!==null&&devices!==null;
  const municipal=i.measurementSource==='anatel-municipal';
- const documented=municipal||(i.measurementSource==='esa-web'||i.measurementSource==='esa-app')&&!!i.measurementDate?.trim()&&!!i.measurementPlace?.trim();
+ const documented=municipal||(i.measurementSource==='esa-web'||i.measurementSource==='esa-app'||i.measurementSource==='local-test')&&!!i.measurementDate?.trim()&&!!i.measurementPlace?.trim();
  const measured=numeric&&documented;
  const perUp=measured?upload!/(municipal?1:devices!):null,perDown=measured?download!/(municipal?1:devices!):null;
  return {municipal,invalid,numeric,documented,measured,perUp,perDown,rows:profiles.map(p=>{

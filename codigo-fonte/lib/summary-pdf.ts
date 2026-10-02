@@ -1,5 +1,5 @@
 import type {ChecklistItem} from './planning-checklist';
-export type PdfSummary={acsAlert?:string;checklist?:ChecklistItem[];institutionalSupport?:string[];logos?:string[];territory:string;audience:string;goal:string;guidance:string;action:string;modality:string;production:string;connectivity:string;connectivityDetails?:string;teaching:string[];conference:string[];rankingNote:string;pending:string[];requirements?:string[];pedagogicalPriority?:string};
+export type PdfSummary={checklist?:ChecklistItem[];institutionalSupport?:string[];logos?:string[];territory:string;audience:string;goal:string;guidance:string;action:string;modality:string;production:string;connectivity:string;connectivityDetails?:string;teaching:string[];conference:string[];rankingNote:string;pending:string[];requirements?:string[];pedagogicalPriority?:string};
 export async function createSummaryPdf(s:PdfSummary){
  const {jsPDF}=await import('jspdf');
  const doc=new jsPDF({unit:'mm',format:'a4'});const margin=17,width=176;let y=20;
@@ -20,7 +20,6 @@ export async function createSummaryPdf(s:PdfSummary){
  heading('Conectividade de referência');text(s.connectivity,9);
  heading('Plataformas sugeridas');text('Ensino',10,true);s.teaching.forEach(v=>text(v,9));if(s.conference.length){text('Videoconferência',10,true);s.conference.forEach(v=>text(v,9))}text(s.rankingNote,8);
  if(s.institutionalSupport?.length){heading('Apoio institucional pedagógico');s.institutionalSupport.forEach(v=>text(v,9))}
- if(s.acsAlert){heading('Alerta: ACS e aquisição de conhecimento');text(s.acsAlert,9)}
  heading('Checklist do planejamento');text('Situação conforme as respostas informadas no fluxo.',8);s.checklist?.forEach(i=>text(`${i.done?'[FEITO]':'[PENDENTE]'} ${i.label}`,9));
  if(s.connectivityDetails){heading('Critérios da conectividade');text(s.connectivityDetails,8)}
  heading('Avaliação');text('Acompanhar inscritos, iniciantes e concluintes; conhecimento e autoeficácia pré/pós; satisfação, barreiras, tarefa aplicada e seguimento após o curso.',9);
