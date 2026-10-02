@@ -19,7 +19,7 @@ export async function createSummaryPdf(s:PdfSummary){
  if(s.requirements?.length){heading('Requisitos selecionados');s.requirements.forEach(v=>text(v,9))}
  heading('Conectividade de referência');text(s.connectivity,9);
  heading('Plataformas sugeridas');text('Ensino',10,true);s.teaching.forEach(v=>text(v,9));if(s.conference.length){text('Videoconferência',10,true);s.conference.forEach(v=>text(v,9))}text(s.rankingNote,8);
- if(s.institutionalSupport?.length){heading('Apoio institucional pedagógico');s.institutionalSupport.forEach(v=>text(v,9))}
+ if(s.institutionalSupport?.length){heading('Potenciais parceiras pedagógicas');s.institutionalSupport.forEach(v=>text(v,9))}
  heading('Checklist do planejamento');text('Situação conforme as respostas informadas no fluxo.',8);s.checklist?.forEach(i=>text(`${i.done?'[FEITO]':'[PENDENTE]'} ${i.label}`,9));
  if(s.connectivityDetails){heading('Critérios da conectividade');text(s.connectivityDetails,8)}
  heading('Avaliação');text('Acompanhar inscritos, iniciantes e concluintes; conhecimento e autoeficácia pré/pós; satisfação, barreiras, tarefa aplicada e seguimento após o curso.',9);

@@ -3,7 +3,7 @@ import type {TrailState} from './trail';
 import type {Municipality} from './connectivity';
 const maps:Record<string,Record<string,string>>={
  audience:{multi:'Equipe multiprofissional',category:'Categoria profissional específica',management:'Gestores do SUS'},
- goal:{knowledge:'Consolidar conhecimento',confidence:'Desenvolver segurança percebida',practice:'Aplicar o aprendizado no serviço'},
+ goal:{knowledge:'Aquisição de conhecimento',confidence:'Aquisição de segurança na aplicação prática de conceitos',practice:'Aplicar o aprendizado no serviço'},
  local:{stable:'Testada e adequada para webconferência',limited:'Instável ou com acesso restrito',unknown:'Ainda não confirmada'},
  mobile:{yes:'Há participantes que acessam apenas por celular',no:'Sem uso exclusivo de celular, conforme levantamento',unknown:'Dispositivos ainda não confirmados'},
  time:{yes:'Pactuado na jornada de trabalho',no:'Não pactuado',unknown:'Ainda não confirmado'},
@@ -22,7 +22,7 @@ export function summaryRows(v:TrailState,m:Municipality|null) {
  const label=(key:keyof TrailState)=>maps[key]?.[String(v[key])]??'Não informado';
  return {
   territory:m?`${m.name} · ${m.uf}`:'Município com dados pendentes',
-  audience:label('audience'),goal:label('goal'),
+  audience:label('audience'),goal:v.goal.split(',').filter(Boolean).map(g=>maps.goal[g]??g).join('; ')||'Não informado',
   rows:[['Participação de ACS',label('acs')],['Tempo protegido',label('time')],['Conteúdo',label('content')],['Equipe',label('team')],['Orçamento',label('budget')],['Plataforma e suporte',label('lms')],['Mediação pedagógica',label('facilitation')],['Telessaúde',label('specialist')],['Piloto',label('pilot')],['Certificação',label('certification')],...requirementSummary(v)]
  };
 }
