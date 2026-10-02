@@ -21,3 +21,21 @@ header{background:var(--purple)}.brand b{color:var(--yellow-soft)}.brand-mark{ba
 .institutional-logos a:first-child img{width:110px;height:52px;object-fit:cover;object-position:center}@media(max-width:450px){.institutional-logos a:first-child img{width:70px;height:34px}}
 
 header{height:auto;min-height:82px;padding-top:16px;padding-bottom:16px}.brand{font-size:22px;line-height:1.25;letter-spacing:-.4px;flex:1;min-width:0;max-width:760px}.header-label,.tag{flex-shrink:0}@media(max-width:1000px){.header-label{display:none}}@media(max-width:750px){header{height:auto;min-height:70px}.brand{font-size:19px}.tag{display:none}}
+
+.summary-logos { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 0 0 18px; margin-bottom: 18px; border-bottom: 1px solid #ececf5; }
+.summary-logos img { width: 22%; max-height: 64px; object-fit: contain; }
+.summary-logos img:nth-child(2) { width: 43%; }
+@media(max-width:650px) { .summary-logos { gap: 12px; } .summary-logos img { max-height: 46px; } }
+
+.connectivity-quality { padding: 18px; margin: 16px 0; border-left: 5px solid #67657a; background: #f4f5fb; border-radius: 6px; }
+.connectivity-quality h3 { margin: 6px 0 10px; }
+.connectivity-quality p { margin: 8px 0; }
+.connectivity-quality summary { cursor: pointer; color: #4b4bc5; font-weight: 600; }
+.quality-margin { border-color: #2e8f6a; }
+.quality-adequate { border-color: #4b4bc5; }
+.quality-restricted { border-color: #bb8500; }
+.quality-insufficient { border-color: #b64f68; }
+
+.institutional-support > div{padding:16px 0;border-bottom:1px solid #ddd}.institutional-support a{overflow-wrap:anywhere}
+
+.municipal-quality{margin:16px 0;padding:16px;border:2px solid #64748b;border-radius:12px;background:#fff}.municipal-quality h3{margin:8px 0 14px}.municipal-color-scale{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.municipal-color-scale>div{padding:10px 8px;border-radius:8px;border:3px solid transparent;color:#fff;min-width:0}.municipal-color-scale span{display:block;font-size:12px;min-height:20px}.municipal-color-scale b{display:block;font-size:14px;line-height:1.4}.scale-0{background:#b91c1c}.scale-1{background:#c2410c}.scale-2{background:#4d7c0f}.scale-3{background:#15803d}.municipal-color-scale .scale-selected{border-color:#172554;box-shadow:0 0 0 2px #fff inset}.municipal-level-0{border-color:#b91c1c}.municipal-level-1{border-color:#c2410c}.municipal-level-2{border-color:#4d7c0f}.municipal-level-3{border-color:#15803d}@media(max-width:600px){.municipal-color-scale{grid-template-columns:repeat(2,minmax(0,1fr))}}
