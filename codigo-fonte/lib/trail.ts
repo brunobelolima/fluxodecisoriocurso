@@ -2,7 +2,7 @@ import {visibleRequirements,type PlatformRequirements} from './platform-requirem
 import {assessPlatforms} from './platform-compatibility';
 export const steps=[
  {title:'Público e objetivo',phase:'Análise',question:'Para quem e com qual objetivo oferecer o curso?',description:'Defina o público e o resultado educacional que deseja alcançar.'},
- {title:'Acesso e plataformas',phase:'Análise',question:'Como os profissionais acessarão o curso?',description:'Selecione o município e os requisitos do curso para comparar plataformas de ensino e videoconferência.'},
+ {title:'Acesso e plataformas',phase:'Análise',question:'Como os profissionais acessarão o curso?',description:'Identifique o local, teste a conexão e escolha os recursos do curso.'},
  {title:'Tempo de participação',phase:'Análise',question:'Há condições de conciliar formação e trabalho?',description:'A boa conexão precisa ser acompanhada de disponibilidade real para participar.'},
  {title:'Caminho de produção',phase:'Design',question:'Adaptar, complementar, produzir ou fazer parceria?',description:'Combine o conteúdo aproveitável com a capacidade da equipe.'},
  {title:'Recursos para a oferta',phase:'Desenvolvimento',question:'Quais recursos sustentam o curso?',description:'Considere plataforma, suporte, acompanhamento e orçamento antes de escolher a modalidade.'},

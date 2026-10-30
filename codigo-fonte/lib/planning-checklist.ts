@@ -1,9 +1,11 @@
+import {assessPlatforms} from './platform-compatibility';
 import type {TrailState} from './trail';
 export type ChecklistItem={label:string;done:boolean};
 export function planningChecklist(v:TrailState,hasMunicipality:boolean,live:boolean):ChecklistItem[]{
  const items:ChecklistItem[]=[
  {label:'Definir público e objetivo do curso',done:!!v.audience&&!!v.goal},
- {label:'Identificar o município e consultar os indicadores de conectividade',done:hasMunicipality},
+ {label:'Identificar o município',done:hasMunicipality},
+ {label:'Registrar teste da conexão usada no curso',done:assessPlatforms(v).measured},
  {label:'Pactuar tempo protegido na jornada de trabalho',done:v.time==='yes'},
  {label:'Disponibilizar conteúdo adequado ao público e ao território',done:v.content==='yes'},
  {label:'Garantir equipe de CP, pedagogia, TI e administração',done:v.team==='full'},

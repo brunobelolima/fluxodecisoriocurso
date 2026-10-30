@@ -1,5 +1,6 @@
+import {studySource,studyLimits,evaluationPlan} from './study-evidence';
 import type {ChecklistItem} from './planning-checklist';
-export type PdfSummary={checklist?:ChecklistItem[];institutionalSupport?:string[];logos?:string[];territory:string;audience:string;goal:string;guidance:string;action:string;modality:string;production:string;connectivity:string;connectivityDetails?:string;teaching:string[];conference:string[];rankingNote:string;pending:string[];requirements?:string[];pedagogicalPriority?:string};
+export type PdfSummary={checklist?:ChecklistItem[];institutionalSupport?:string[];logos?:string[];territory:string;audience:string;goal:string;guidance:string;action:string;modality:string;production:string;connectivity:string;connectivityDetails?:string;teaching:string[];conference:string[];rankingNote:string;pending:string[];requirements?:string[];practiceGuidance?:string;facilitationGuidance?:string;pedagogicalPriority?:string};
 export async function createSummaryPdf(s:PdfSummary){
  const {jsPDF}=await import('jspdf');
  const doc=new jsPDF({unit:'mm',format:'a4'});const margin=17,width=176;let y=20;
@@ -16,14 +17,15 @@ export async function createSummaryPdf(s:PdfSummary){
  text(`${s.territory} | ${s.audience}`,10);text(`Gerado em ${new Date().toLocaleDateString('pt-BR')} | Objetivo: ${s.goal}`,9);
  heading('Orientação automática');text(s.guidance,12,true);text(s.action);
  text(`Modalidade: ${s.modality}`,10,true);text(`Produção: ${s.production}`);if(s.pedagogicalPriority)text(`Prioridade pedagógica: ${s.pedagogicalPriority}`,9);
+ if(s.practiceGuidance)text(`Integração com o serviço: ${s.practiceGuidance}`,9);if(s.facilitationGuidance)text(`Mediação e feedback: ${s.facilitationGuidance}`,9);
  if(s.requirements?.length){heading('Requisitos selecionados');s.requirements.forEach(v=>text(v,9))}
- heading('Conectividade de referência');text(s.connectivity,9);
+ heading('Conexão testada');text(s.connectivity,9);
  heading('Plataformas sugeridas');text('Ensino',10,true);s.teaching.forEach(v=>text(v,9));if(s.conference.length){text('Videoconferência',10,true);s.conference.forEach(v=>text(v,9))}text(s.rankingNote,8);
  if(s.institutionalSupport?.length){heading('Potenciais parceiras pedagógicas');s.institutionalSupport.forEach(v=>text(v,9))}
  heading('Checklist do planejamento');text('Situação conforme as respostas informadas no fluxo.',8);s.checklist?.forEach(i=>text(`${i.done?'[FEITO]':'[PENDENTE]'} ${i.label}`,9));
  if(s.connectivityDetails){heading('Critérios da conectividade');text(s.connectivityDetails,8)}
- heading('Avaliação');text('Acompanhar inscritos, iniciantes e concluintes; conhecimento e autoeficácia pré/pós; satisfação, barreiras, tarefa aplicada e seguimento após o curso.',9);
- text('Fundamentação: dados oficiais da Anatel e achados de Lima (Unifesp, 2026). Orientação para planejamento; a referência municipal não substitui a validação da conexão local.',8);
+ heading('Avaliação');text(evaluationPlan,9);heading('Fundamentação e limites');text(studySource,8);text(studyLimits,8);
+ text('Fundamentação: dados oficiais da Anatel e achados de Lima (Unifesp, 2026). Orientação para planejamento; a medição representa somente a rede e o momento testados.',8);
  const pages=doc.getNumberOfPages();for(let i=1;i<=pages;i++){doc.setPage(i);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(110,125,135);doc.text(`Fluxo decisório | ${i} / ${pages}`,margin,286)}
  return doc;
 }

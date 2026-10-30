@@ -53,3 +53,8 @@ header{height:auto;min-height:82px;padding-top:16px;padding-bottom:16px}.brand{f
 .local-connection{margin-top:10px}.local-connection input:not([type=checkbox]){width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:6px;font:inherit}.local-connection .form-grid{margin:12px 0}
 
 .goal-options{border:0;padding:0;margin:0;min-width:0}.goal-options legend{font-size:14px;font-weight:600}.goal-options .inline-check{margin:8px 0;align-items:flex-start}.goal-options .small{margin:4px 0}
+
+/* Teste local em um único painel */
+.local-test-panel{padding:16px;border:1px solid #d9ddea;border-radius:10px;margin:14px 0 22px;background:#fff}.local-test-panel>h3{margin:0 0 6px}.location-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:12px 0;font-size:13px;color:var(--muted)}.simet-launch{margin:14px 0}.simet-embedded iframe{display:block;width:100%;height:660px;border:1px solid #dde1ec;border-radius:8px;background:#f8fafc}.simet-embedded{margin:12px 0}.simet-embedded>details{margin:8px 0}.local-result-fields{margin-top:14px}.local-result-fields>summary,.municipal-reference>summary{font-weight:600;cursor:pointer}.municipal-reference{font-size:13px;margin:12px 0}.local-result-fields select{width:100%}.stage-evidence{margin:14px 0}.stage-evidence .evidence-detail{padding:10px 0}.stage-evidence summary{cursor:pointer}.local-test-panel button:disabled{opacity:.5;cursor:not-allowed}@media(max-width:650px){.simet-embedded iframe{height:720px}.local-test-panel{padding:12px}.location-actions{gap:8px}}
+
+.platform-preview{margin:16px 0}.platform-preview>summary{font-size:14px;font-weight:600;cursor:pointer}
