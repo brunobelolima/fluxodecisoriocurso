@@ -1,0 +1,1 @@
+Retirados os seletores manuais de estado e município. A identificação usa apenas geolocalização e aparece como texto para leitura. Se a localização falhar, é possível tentar novamente ou prosseguir com o município pendente, sem inventar localidade. Cloudflare e alertas abertos em laranja preservados. Compilação aprovada. Não publicado nesta entrega.
