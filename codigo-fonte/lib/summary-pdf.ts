@@ -1,4 +1,4 @@
-import {studySource,studyLimits,evaluationPlan} from './study-evidence';
+import {studySource,studyLimits} from './study-evidence';
 import type {ChecklistItem} from './planning-checklist';
 export type PdfSummary={checklist?:ChecklistItem[];institutionalSupport?:string[];logos?:string[];territory:string;audience:string;goal:string;guidance:string;action:string;modality:string;production:string;connectivity:string;connectivityDetails?:string;teaching:string[];conference:string[];rankingNote:string;pending:string[];requirements?:string[];practiceGuidance?:string;facilitationGuidance?:string;pedagogicalPriority?:string};
 export async function createSummaryPdf(s:PdfSummary){
@@ -24,7 +24,7 @@ export async function createSummaryPdf(s:PdfSummary){
  if(s.institutionalSupport?.length){heading('Potenciais parceiras pedagógicas');s.institutionalSupport.forEach(v=>text(v,9))}
  heading('Checklist do planejamento');text('Situação conforme as respostas informadas no fluxo.',8);s.checklist?.forEach(i=>text(`${i.done?'[FEITO]':'[PENDENTE]'} ${i.label}`,9));
  if(s.connectivityDetails){heading('Critérios da conectividade');text(s.connectivityDetails,8)}
- heading('Avaliação');text(evaluationPlan,9);heading('Fundamentação e limites');text(studySource,8);text(studyLimits,8);
+ heading('Fundamentação e limites');text(studySource,8);text(studyLimits,8);
  text('Fundamentação: dados oficiais da Anatel e achados de Lima (Unifesp, 2026). Orientação para planejamento; a medição representa somente a rede e o momento testados.',8);
  const pages=doc.getNumberOfPages();for(let i=1;i<=pages;i++){doc.setPage(i);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(110,125,135);doc.text(`Fluxo decisório | ${i} / ${pages}`,margin,286)}
  return doc;

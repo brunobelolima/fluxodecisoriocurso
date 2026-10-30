@@ -1,33 +1,18 @@
-# Atualização do fluxo com SIMET incorporado
+# Fluxo atualizado com alertas e classificação local
 
-## Publicação no GitHub Pages
+Envie o conteúdo desta pasta à raiz do repositório fluxodecisoriocurso. Mantenha index.html e assets/ na raiz. O código editável está em codigo-fonte/.
 
-Envie o conteúdo desta pasta para a raiz do repositório fluxodecisoriocurso, substituindo os arquivos anteriores. Mantenha index.html e assets/ na raiz. O código editável está em codigo-fonte/. Compilação: npm ci e npm run build.
+Alterações desta versão:
+- Achados da dissertação visíveis como alertas de leitura, com citação autor-data e acesso à referência completa em ABNT.
+- Removida a expressão “ou informe o endereço” junto ao botão de geolocalização. O campo de identificação do local foi mantido.
+- Classificação local exibida automaticamente ao preencher download e upload, com escala do vermelho ao verde, sem depender da seleção de plataformas ou de clicar em Aplicar.
+- Valores válidos usados automaticamente pelo planejamento, resumo e PDF. O endereço pode ficar sem preenchimento; nesse caso o local aparece como não identificado.
+- Retirado o parágrafo indicado pelo usuário da última etapa, do resumo e do PDF.
 
-## O que mudou
+A escala local compara os dados informados à referência de 4 Mbps de download e 2,5 Mbps de upload para um dispositivo em reunião com vídeo; é uma escala do fluxo, não uma classificação oficial SIMET. As exigências variam conforme os recursos usados. Foram mantidas a avaliação de adequação às plataformas e suas fontes.
 
-- Retirada a classificação da conectividade municipal. Os dados brutos municipais ficam recolhidos e não determinam a adequação local.
-- Painel único de teste: identificação por endereço/nome de unidade ou geolocalização solicitada ao navegador.
-- SIMET oficial incorporado na própria página, carregado somente ao clicar. Sua interface carregou na verificação visual realizada nesta entrega.
-- Resultados registrados pelo usuário são aplicados às sugestões, ao resumo e ao PDF. Trocar o local apaga os resultados anteriores para evitar atribuição à rede errada.
-- Orientações pedagógicas e prévia das plataformas recolhidas. Removidas repetições de título, alertas, modalidade e instruções do resumo.
+O SIMET permanece incorporado. Os valores ainda são registrados manualmente, pois a importação automática não foi implementada. Uma alteração no endereço invalida os dados anteriores.
 
-## Integração automática pendente
+Verificação: TypeScript e Vite aprovados; geração de PDF aprovada; alertas inspecionados no navegador; preenchimento de 4 Mbps de download e 2,5 Mbps de upload gerou automaticamente Atende à referência. O teste de interface utilizou valores hipotéticos.
 
-A incorporação do teste não equivale à integração automática de dados. Não foi localizada uma interface pública documentada de incorporação com retorno de resultados ao domínio do fluxograma. Não foi implementada leitura do conteúdo interno do SIMET, interceptação de tráfego, acesso a bancos privados ou um protocolo postMessage presumido. O formulário informa explicitamente que download e upload ainda devem ser copiados do teste.
-
-Para concluir a importação automática seria necessária uma interface documentada e disponibilizada pelo responsável pelo SIMET, com retorno de resultados, política de origens e eventuais credenciais. Não se deve expor credenciais em um site estático GitHub Pages.
-
-O endereço informado e as coordenadas identificam o ponto apenas no plano local. Não são enviados ao SIMET por este formulário e não permitem medir remotamente a conexão de um endereço. A medição deve ser iniciada no dispositivo conectado à rede de interesse. A geolocalização exige HTTPS e autorização do navegador, sem substituir a medição.
-
-O SIMET é um serviço externo: pode apresentar termos, solicitar permissões e alterar suas regras de incorporação. Se o navegador ou o serviço impedir o painel, existe uma alternativa em outra aba, recolhida em “O teste não carregou?”. Não se garante medição incorporada em todos os navegadores ou redes.
-
-## Verificação
-
-- TypeScript e compilação Vite aprovados.
-- Interface do SIMET carregada no painel incorporado da prévia.
-- Testados endereço, registro de valores com vírgula decimal, aplicação ao planejamento e invalidação após mudança de local.
-- Verificada a alternativa de endereço quando GPS não está disponível em contexto HTTP.
-- Regressão das recomendações para objetivos múltiplos, conexão insuficiente e geração de PDF aprovada.
-- Não foi executada uma medição real de velocidade nem validado o GPS em um dispositivo físico ou em domínio HTTPS de produção.
-- Não publicado no GitHub nesta entrega.
+Não publicado no GitHub nesta entrega.
