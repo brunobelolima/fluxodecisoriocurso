@@ -1,18 +1,28 @@
-# Fluxo atualizado com alertas e classificação local
+# Fluxo com Cloudflare e alertas condicionais
 
-Envie o conteúdo desta pasta à raiz do repositório fluxodecisoriocurso. Mantenha index.html e assets/ na raiz. O código editável está em codigo-fonte/.
+Envie o conteúdo desta pasta para a raiz do repositório fluxodecisoriocurso. Mantenha index.html e assets/ na raiz. Código editável em codigo-fonte/. Compilação: npm ci e npm run build.
 
-Alterações desta versão:
-- Achados da dissertação visíveis como alertas de leitura, com citação autor-data e acesso à referência completa em ABNT.
-- Removida a expressão “ou informe o endereço” junto ao botão de geolocalização. O campo de identificação do local foi mantido.
-- Classificação local exibida automaticamente ao preencher download e upload, com escala do vermelho ao verde, sem depender da seleção de plataformas ou de clicar em Aplicar.
-- Valores válidos usados automaticamente pelo planejamento, resumo e PDF. O endereço pode ficar sem preenchimento; nesse caso o local aparece como não identificado.
-- Retirado o parágrafo indicado pelo usuário da última etapa, do resumo e do PDF.
+## Alterações
 
-A escala local compara os dados informados à referência de 4 Mbps de download e 2,5 Mbps de upload para um dispositivo em reunião com vídeo; é uma escala do fluxo, não uma classificação oficial SIMET. As exigências variam conforme os recursos usados. Foram mantidas a avaliação de adequação às plataformas e suas fontes.
+- Alertas menores, em tom neutro, com conteúdo e referência ABNT recolhidos. Nenhum alerta é mostrado antes de uma resposta relevante.
+- Avisos por falta de tempo protegido, mediação, telessaúde, suporte técnico ou conteúdo adequado. A participação de ACS isoladamente não dispara alerta. A banda abaixo das referências de vídeo só gera aviso quando recursos de vídeo foram escolhidos.
+- Selecionar “Ainda não confirmado” não dispara alerta de divergência. O checklist continua registrando as pendências.
+- GPS preenche estado e município após consulta reversa ao Nominatim/OpenStreetMap. A correspondência exige país Brasil, UF e nome compatíveis com a base municipal. Quando não há correspondência segura, permanecem os campos manuais. Coordenadas arredondadas a três casas decimais são enviadas ao serviço, apenas após clique do usuário.
+- Motor oficial @cloudflare/speedtest 1.15.0 substitui o SIMET. A página externa bloqueia iframe; o motor executa na própria página e entrega os dados ao fluxo automaticamente.
+- Download, upload, latência e jitter são apresentados. Perda de pacotes não é medida; não se atribui estabilidade prolongada a uma medição breve.
+- Perfil integrado com até cerca de 45 MB de transferência e interrupção pelo usuário. Por limitar o volume, pode divergir do teste completo, especialmente em conexões muito rápidas. Há link para a página completa indicada pelo usuário e alternativa de registro manual.
+- Classificação de banda do próprio fluxo mantida, sem atribuir a escala à Cloudflare ou ao AIM. Valores e origem do teste seguem para o resumo e o PDF.
 
-O SIMET permanece incorporado. Os valores ainda são registrados manualmente, pois a importação automática não foi implementada. Uma alteração no endereço invalida os dados anteriores.
+## Verificação
 
-Verificação: TypeScript e Vite aprovados; geração de PDF aprovada; alertas inspecionados no navegador; preenchimento de 4 Mbps de download e 2,5 Mbps de upload gerou automaticamente Atende à referência. O teste de interface utilizou valores hipotéticos.
+TypeScript e Vite aprovados. Testes das condições dos alertas, associação município/UF, limites da classificação e geração de PDF aprovados. Um teste real Cloudflare concluiu no navegador da prévia, preenchendo os valores e a classificação. Esse resultado representa o ambiente de verificação, não a conexão do usuário. Consulta reversa com coordenadas públicas de Santos retornou Santos/SP. A permissão GPS de um dispositivo físico em HTTPS de produção ainda precisa ser conferida após publicação.
+
+Geolocalização exige HTTPS e autorização do navegador. Nominatim e Cloudflare dependem da disponibilidade e das políticas dos serviços. Não foram inseridas chaves ou credenciais no site.
 
 Não publicado no GitHub nesta entrega.
+
+## Fontes técnicas
+
+Cloudflare: https://github.com/cloudflare/speedtest
+Nominatim: https://nominatim.org/release-docs/latest/api/Reverse/
+OpenStreetMap: https://www.openstreetmap.org/copyright
