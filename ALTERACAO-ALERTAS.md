@@ -1,0 +1,1 @@
+Alertas visíveis integralmente ao serem acionados pelas respostas, sem botão de expansão. Caixa em laranja suave com borda laranja e texto escuro. Abertura A dissertação sugere e referências ABNT preservadas. Compilação aprovada. Substitua index.html e assets/ na raiz do repositório. Não publicado nesta entrega.

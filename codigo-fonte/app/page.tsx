@@ -12,14 +12,14 @@ import {finalGuidance} from '../lib/course-summary';
 import {requirementOptions,visibleRequirements} from '../lib/platform-requirements';
 import FinalSummary from '../components/final-summary';
 import PlatformCompatibility from '../components/platform-compatibility';
-import {dissertationAlerts} from '../lib/dissertation-alerts';
+import {dissertationAlerts,alertSuggestions} from '../lib/dissertation-alerts';
 import {rankPlatforms} from '../lib/platform-compatibility';
 import LocalConnection from '../components/local-connection';
 type Data={municipality:Municipality;mode:string;retrieved:string;source:string;speed:{value:{period:string;samples:number;download:number;upload:number}|null;source:string;retrieved:string;method:string}};
 const fmt=(v:number|null,d=1)=>v===null?'Sem dado':v.toLocaleString('pt-BR',{maximumFractionDigits:d,minimumFractionDigits:d});
 const initial:TrailState={participants:'',parallelRooms:'',pedagogy:'',offlineNeed:'',teachingExisting:'',conferenceExisting:'',technicalSupport:'',meetingResources:'',licenseFit:'',audience:'',goal:'',uf:'',id:'',local:'unknown',mobile:'unknown',time:'',content:'',team:'',budget:'',lms:'',facilitation:'',specialist:'',acs:'',pilot:'',certification:'',measurementSource:'',measurementDate:'',measurementPlace:'',download:'',upload:'',devices:'1',skipData:false};
 function Select({label,value,onChange,options,disabled=false}:{label:string;value:string;onChange:(v:string)=>void;options:[string,string][];disabled?:boolean}){return <label>{label}<select value={value} onChange={e=>onChange(e.target.value)} disabled={disabled}><option value="">Selecione uma resposta</option>{options.map(([v,t])=><option value={v} key={v}>{t}</option>)}</select></label>}
-function Evidence({items,alerts}:{items:EvidenceDecision[];alerts:Record<string,string>}){const visible=items.filter(a=>alerts[a.id]);if(!visible.length)return null;return <aside className="study-notes" aria-label="Pontos de atenção">{visible.map(a=><details className="study-note" key={a.id}><summary><span>Ponto de atenção · {a.title}</span><ChevronDown size={15}/></summary><p>{alerts[a.id]}</p><p>{a.action}</p><p className="small"><b>Achado:</b> {a.finding}</p><small>(Lima, 2026, {a.reference.replace('§§','seções').replace('§','seção').trim()}).</small><details><summary>Referência em ABNT</summary><p className="small">{studySource}</p></details></details>)}</aside>}
+function Evidence({items,alerts}:{items:EvidenceDecision[];alerts:Record<string,string>}){const visible=items.filter(a=>alerts[a.id]);if(!visible.length)return null;return <aside className="study-notes" aria-label="Pontos de atenção">{visible.map(a=><article className="study-note" key={a.id}><h3>{alertSuggestions[a.id]??'A dissertação sugere considerar estes achados no planejamento.'}</h3><p>{alerts[a.id]}</p><p>{a.action}</p><p className="small"><b>Achado:</b> {a.finding}</p><small>(Lima, 2026, {a.reference.replace('§§','seções').replace('§','seção').trim()}).</small><p className="small study-note-reference"><b>Referência:</b> {studySource}</p></article>)}</aside>}
 
 
 const yesno:[string,string][]=[['yes','Sim'],['no','Não'],['unknown','Ainda não confirmado']];

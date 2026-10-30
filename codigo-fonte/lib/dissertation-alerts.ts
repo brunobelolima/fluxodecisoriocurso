@@ -8,3 +8,11 @@ export function dissertationAlerts(v:TrailState,network:{measured:boolean;constr
  if(['partial','no'].includes(v.content))alerts.tracks=v.acs==='yes'?'O conteúdo ainda precisa ser adequado ao público, incluindo as atribuições e a linguagem para ACS.':'O conteúdo disponível ainda não está adequado ao público e ao território.';
  return alerts;
 }
+
+export const alertSuggestions:Record<string,string>={
+ participation:'A dissertação sugere pactuar tempo protegido para a formação.',
+ digital:'A dissertação sugere facilitar o acesso e oferecer suporte digital.',
+ facilitation:'A dissertação sugere manter mediação pedagógica e feedback.',
+ practice:'A dissertação sugere integrar casos do território e apoio por telessaúde.',
+ tracks:'A dissertação sugere adequar o conteúdo e a linguagem ao público e às atribuições profissionais.'
+};
